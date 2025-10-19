@@ -15,6 +15,28 @@ const Header = () => {
     'Sobre nosotros'
   ];
 
+  // Función para manejar el hover del botón
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.currentTarget;
+    target.style.backgroundColor = '#008C9A';
+    target.style.transform = 'scale(1.05)';
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.currentTarget;
+    target.style.backgroundColor = '#00A5B5';
+    target.style.transform = 'scale(1)';
+  };
+
+  // Función para el botón móvil
+  const handleMobileMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = '#008C9A';
+  };
+
+  const handleMobileMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.backgroundColor = '#00A5B5';
+  };
+
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-6xl">
       {/* Contenedor principal con bordes redondeados y efecto glass */}
@@ -24,11 +46,11 @@ const Header = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Image
-        src="/logoart.svg"
-        alt="My Company Logo"
-        width={100}
-        height={50}
-      />
+                src="/logoart.svg"
+                alt="Art&Wine Logo"
+                width={100}
+                height={50}
+              />
             </div>
 
             {/* Menú Desktop */}
@@ -60,16 +82,10 @@ const Header = () => {
 
               {/* Botón Reserva Ahora */}
               <button 
-                className="hidden md:block p-2 rounded-lg font-semibold text-white transition-all duration-200 hover:shadow-lg transform hover:scale-105"
+                className="hidden md:block px-6 py-2.5 rounded-lg font-semibold text-white transition-all duration-200 hover:shadow-lg"
                 style={{ backgroundColor: '#00A5B5' }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#008C9A';
-                  e.target.style.transform = 'scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = '#00A5B5';
-                  e.target.style.transform = 'scale(1)';
-                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 Reserva ahora
               </button>
@@ -80,12 +96,18 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <div className="w-6 flex flex-col space-y-1">
-                  <div className="h-0.5 w-full bg-gray-700 transition-transform duration-200"
-                       style={{ transform: isMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }}></div>
-                  <div className="h-0.5 w-full bg-gray-700 transition-opacity duration-200"
-                       style={{ opacity: isMenuOpen ? 0 : 1 }}></div>
-                  <div className="h-0.5 w-full bg-gray-700 transition-transform duration-200"
-                       style={{ transform: isMenuOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none' }}></div>
+                  <div 
+                    className="h-0.5 w-full bg-white transition-transform duration-200"
+                    style={{ transform: isMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }}
+                  ></div>
+                  <div 
+                    className="h-0.5 w-full bg-white transition-opacity duration-200"
+                    style={{ opacity: isMenuOpen ? 0 : 1 }}
+                  ></div>
+                  <div 
+                    className="h-0.5 w-full bg-white transition-transform duration-200"
+                    style={{ transform: isMenuOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none' }}
+                  ></div>
                 </div>
               </button>
             </div>
@@ -100,7 +122,7 @@ const Header = () => {
                 <a
                   key={item}
                   href="#"
-                  className="text-gray-700 hover:text-gray-900 font-medium py-3 px-4 rounded-lg hover:bg-white/50 transition-colors"
+                  className="text-white hover:text-gray-900 font-medium py-3 px-4 rounded-lg hover:bg-white/50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
@@ -112,12 +134,8 @@ const Header = () => {
                 className="mt-4 px-6 py-3 rounded-lg font-semibold text-white transition-colors duration-200 text-center"
                 style={{ backgroundColor: '#00A5B5' }}
                 onClick={() => setIsMenuOpen(false)}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#008C9A';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = '#00A5B5';
-                }}
+                onMouseEnter={handleMobileMouseEnter}
+                onMouseLeave={handleMobileMouseLeave}
               >
                 Reserva ahora
               </button>
