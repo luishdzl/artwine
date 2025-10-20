@@ -42,7 +42,7 @@ export default function Home() {
         </div>
 
         {/* Espacio blanco - 35% height/width */}
-        <div className="w-full h-[35%] bg-white flex items-center justify-center">
+        <div className="w-full py-5 bg-white flex items-center justify-center">
           <div className="text-center px-8 w-[65%]">
             <h4 className="text-2xl font-bold text-gray-800 mb-4">
               Bienvenidx a Art&Wine, un plan inolvidable.
